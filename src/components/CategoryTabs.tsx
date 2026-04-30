@@ -5,6 +5,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Flame,
+  Ticket,
   Radio,
   Trophy,
   Crown,
@@ -27,6 +28,7 @@ interface TabItem {
 const categories: TabItem[] = [
   { label: "Home", icon: Home, href: "/" },
   { label: "Trending", icon: Flame, href: "/trending" },
+  { label: "E-Lotto", icon: Ticket, href: "/e-lotto" },
   { label: "Live", icon: Radio },
   { label: "Sportsbook", icon: Trophy },
   { label: "aloKingz Arena", badge: { text: "Free", color: "bg-emerald-500" }, icon: Crown },
@@ -49,6 +51,7 @@ export default function CategoryTabs() {
   const activeTab = (() => {
     if (location.pathname === "/") return "Home";
     if (location.pathname === "/trending") return "Trending";
+    if (location.pathname === "/e-lotto") return "E-Lotto";
     return "";
   })();
 
