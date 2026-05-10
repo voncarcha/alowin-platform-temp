@@ -4,18 +4,13 @@ import {
   Home,
   ChevronLeft,
   ChevronRight,
-  Flame,
+  Crosshair,
   Ticket,
   Radio,
   Trophy,
   Crown,
-  Tv,
   Dice5,
-  UserRound,
-  Gamepad2,
-  MonitorPlay,
   Tag,
-  Users,
 } from "lucide-react";
 
 interface TabItem {
@@ -27,19 +22,24 @@ interface TabItem {
 
 const categories: TabItem[] = [
   { label: "Home", icon: Home, href: "/" },
-  { label: "Trending", icon: Flame, href: "/trending" },
   { label: "E-Lotto", icon: Ticket, href: "/e-lotto" },
-  { label: "Live", icon: Radio },
-  { label: "Sportsbook", icon: Trophy },
-  { label: "aloKingz Arena", badge: { text: "Free", color: "bg-emerald-500" }, icon: Crown },
-  { label: "PinoyPlay", badge: { text: "New", color: "bg-blue-500" }, icon: Tv },
-  { label: "Casino", icon: Dice5 },
-  { label: "Live Dealer Casino", icon: UserRound },
-  { label: "Esports", icon: Gamepad2 },
-  { label: "Virtual Games", icon: MonitorPlay },
+  { label: "Sportsbook", icon: Trophy, href: "/sportsbook" },
+  { label: "Arena Console", badge: { text: "Free", color: "bg-emerald-500" }, icon: Crown, href: "/arena-console" },
+  { label: "Casino", icon: Dice5, href: "/casino" },
+  { label: "Live Casino", icon: Radio, href: "/live-casino" },
+  { label: "Prediction", icon: Crosshair, href: "/trending" },
   { label: "Promotions", icon: Tag },
-  { label: "Community Hub", badge: { text: "Exclusive", color: "bg-amber-500" }, icon: Users },
 ];
+
+const activeTabByPath: Record<string, string> = {
+  "/": "Home",
+  "/trending": "Prediction",
+  "/e-lotto": "E-Lotto",
+  "/sportsbook": "Sportsbook",
+  "/arena-console": "Arena Console",
+  "/casino": "Casino",
+  "/live-casino": "Live Casino",
+};
 
 export default function CategoryTabs() {
   const navigate = useNavigate();
@@ -48,12 +48,7 @@ export default function CategoryTabs() {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
-  const activeTab = (() => {
-    if (location.pathname === "/") return "Home";
-    if (location.pathname === "/trending") return "Trending";
-    if (location.pathname === "/e-lotto") return "E-Lotto";
-    return "";
-  })();
+  const activeTab = activeTabByPath[location.pathname] ?? "";
 
   const checkScroll = () => {
     const el = scrollRef.current;
