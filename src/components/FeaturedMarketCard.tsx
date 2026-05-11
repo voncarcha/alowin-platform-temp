@@ -24,16 +24,16 @@ export default function FeaturedMarketCard({
   comments: Comment[];
 }) {
   return (
-    <div className="bg-white rounded-[1.6rem] border border-border shadow-[0_22px_70px_rgba(0,0,0,0.06)] overflow-hidden">
+    <div className="overflow-hidden rounded-[1.6rem] border border-border bg-white shadow-[0_24px_80px_rgba(19,49,112,0.08)]">
       <div className="p-6 lg:p-8">
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-10">
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-3">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-red-50 text-red-600 text-[11px] font-semibold rounded-md uppercase tracking-wide">
+              <span className="inline-flex items-center gap-1.5 rounded-md bg-accent-warm-bg px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-[#d12d49]">
                 <span className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse" />
                 Live
               </span>
-              <span className="text-xs font-medium text-secondary bg-bg px-2.5 py-1 rounded-md">
+              <span className="rounded-md bg-accent-bg px-2.5 py-1 text-xs font-medium text-accent">
                 {market.category}
               </span>
             </div>
@@ -61,14 +61,14 @@ export default function FeaturedMarketCard({
 
             <div className="flex items-center gap-6 text-sm text-secondary">
               <div className="flex items-center gap-1.5">
-                <TrendingUp className="w-4 h-4" />
+                <TrendingUp className="w-4 h-4 text-accent" />
                 <span>Volume: <span className="font-semibold text-primary">{market.volume}</span></span>
               </div>
               <div>
                 Ends in: <span className="font-semibold text-primary">{market.end_time}</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <MessageSquare className="w-4 h-4" />
+                <MessageSquare className="w-4 h-4 text-[#d12d49]" />
                 <span>{comments.length}</span>
               </div>
             </div>
@@ -99,7 +99,7 @@ export default function FeaturedMarketCard({
               </ResponsiveContainer>
             </div>
 
-            <div className="flex items-center gap-4 mt-2 justify-center">
+            <div className="mt-2 flex items-center justify-center gap-4 rounded-full bg-bg-alt/60 px-4 py-2">
               <div className="flex items-center gap-1.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-yes" />
                 <span className="text-xs font-medium text-secondary">YES {market.probability_yes}%</span>
@@ -118,7 +118,7 @@ export default function FeaturedMarketCard({
           </div>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-border">
+        <div className="mt-8 border-t border-border pt-6">
           <CommentFeed comments={comments} />
         </div>
       </div>

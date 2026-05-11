@@ -7,7 +7,7 @@ export default function CommentFeed({ comments }: { comments: Comment[] }) {
       <div className="space-y-3">
         {comments.slice(0, 3).map((c) => (
           <div key={c.id} className="flex items-start gap-3">
-            <div className="w-8 h-8 rounded-full bg-bg text-primary text-xs font-semibold flex items-center justify-center shrink-0 border border-border">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border bg-accent-bg text-xs font-semibold text-accent">
               {c.avatar}
             </div>
             <div className="min-w-0">

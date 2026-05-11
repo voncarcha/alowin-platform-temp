@@ -12,10 +12,10 @@ const paymentMethods = [
 ];
 
 const providers = [
-  { name: "JILI", style: "text-yellow-400 font-black text-2xl tracking-wider" },
-  { name: "Evolution", style: "text-amber-300 font-bold text-xl tracking-wide" },
-  { name: "PG Soft", style: "text-white font-bold text-xl" },
-  { name: "Pragmatic", style: "text-red-400 font-black text-xl tracking-wide" },
+  { name: "JILI", style: "text-[#e1334f] font-black text-2xl tracking-wider" },
+  { name: "Evolution", style: "text-[#1f5eff] font-bold text-xl tracking-wide" },
+  { name: "PG Soft", style: "text-primary font-bold text-xl" },
+  { name: "Pragmatic", style: "text-[#d12d49] font-black text-xl tracking-wide" },
 ];
 
 const gameCategories = [
@@ -30,7 +30,7 @@ const gameCategories = [
   { label: "Horse Racing", emoji: "🐎", ring: "#a16207" },
   { label: "Sabong", emoji: "🐓", ring: "#dc2626" },
   { label: "Drag Race", emoji: "🏁", ring: "#1d4ed8" },
-  { label: "Live In Game", emoji: "📺", ring: "#7c3aed" },
+  { label: "Live In Game", emoji: "📺", ring: "#2563eb" },
 ];
 
 const casinoGames = [
@@ -46,8 +46,8 @@ const casinoGames = [
   {
     name: "Sweet Bonanza",
     provider: "Pragmatic",
-    bg: "linear-gradient(135deg,#9d174d 0%,#be185d 40%,#7c3aed 100%)",
-    accent: "#fde68a",
+    bg: "linear-gradient(135deg,#ef4444 0%,#e1334f 42%,#1f5eff 100%)",
+    accent: "#ffd0d8",
     tag: "POPULAR",
     tagColor: "#f59e0b",
     icon: "🍬",
@@ -55,8 +55,8 @@ const casinoGames = [
   {
     name: "Gates of Olympus",
     provider: "Pragmatic",
-    bg: "linear-gradient(135deg,#1e1b4b 0%,#4c1d95 50%,#7c3aed 100%)",
-    accent: "#c4b5fd",
+    bg: "linear-gradient(135deg,#14316b 0%,#1f5eff 52%,#60a5fa 100%)",
+    accent: "#d8e6ff",
     tag: null,
     tagColor: "",
     icon: "⚡",
@@ -106,7 +106,7 @@ const liveCasinoGames = [
   {
     name: "Crazy Time",
     provider: "Evolution",
-    bg: "linear-gradient(135deg,#7c3aed 0%,#db2777 50%,#dc2626 100%)",
+    bg: "linear-gradient(135deg,#1f5eff 0%,#6aa6ff 32%,#ef4444 100%)",
     icon: "🎡",
   },
   {
@@ -137,7 +137,7 @@ const miniGames = [
   },
   {
     name: "Color Hunt",
-    bg: "linear-gradient(135deg,#ec4899 0%,#a855f7 50%,#6366f1 100%)",
+    bg: "linear-gradient(135deg,#ef4444 0%,#f97316 42%,#1f5eff 100%)",
     icon: "🔍",
   },
   {
@@ -152,7 +152,7 @@ const miniGames = [
   },
   {
     name: "Mines",
-    bg: "linear-gradient(135deg,#1f2937 0%,#374151 50%,#4b5563 100%)",
+    bg: "linear-gradient(135deg,#15366f 0%,#1f5eff 50%,#89b2ff 100%)",
     icon: "💣",
   },
 ];
@@ -210,37 +210,41 @@ const upcomingMatches = [
 function HeroBanner() {
   return (
     <section
-      className="relative overflow-hidden"
+      className="relative overflow-hidden border-b border-border"
       style={{
         background:
-          "linear-gradient(135deg,#050505 0%,#0a0f1e 40%,#0d0d0d 100%)",
+          "linear-gradient(135deg,#fff5f7 0%,#ffffff 36%,#f1f6ff 100%)",
       }}
     >
       {/* Ambient glows */}
-      <div className="pointer-events-none absolute -top-32 right-1/4 h-80 w-80 rounded-full bg-blue-700/15 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-20 left-1/3 h-64 w-64 rounded-full bg-purple-700/15 blur-3xl" />
-      <div className="pointer-events-none absolute top-1/2 right-16 h-48 w-48 rounded-full bg-yellow-500/10 blur-3xl" />
+      <div className="pointer-events-none absolute -top-28 right-1/4 h-80 w-80 rounded-full bg-blue-500/16 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-24 left-1/3 h-72 w-72 rounded-full bg-red-400/14 blur-3xl" />
+      <div className="pointer-events-none absolute top-1/3 right-10 h-56 w-56 rounded-full bg-sky-300/18 blur-3xl" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 lg:py-14">
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
           {/* Left: content */}
-          <div className="flex-1 text-white">
+          <div className="flex-1">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/85 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-accent shadow-[0_12px_30px_rgba(31,94,255,0.08)] ring-1 ring-accent/10">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#e1334f]" />
+              Alowin Wallet
+            </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05]">
               Power Up Your
               <br />
-              <span className="text-yellow-400">alo</span>
+              <span className="text-[#e1334f]">alo</span>
               <span className="relative">
                 <span
-                  className="underline decoration-yellow-400/60 underline-offset-4"
+                  className="underline decoration-[#1f5eff]/50 underline-offset-4 text-[#1f5eff]"
                   style={{ textDecorationStyle: "wavy" }}
                 >
                   win
                 </span>
               </span>{" "}
-              <span className="text-gray-100">Wallet</span>
+              <span className="text-primary">Wallet</span>
             </h1>
 
-            <p className="mt-4 text-base sm:text-lg text-gray-300 font-medium tracking-wide">
+            <p className="mt-4 max-w-xl text-base font-medium tracking-wide text-secondary sm:text-lg">
               Quick Play.&nbsp;&nbsp;Quick Pay.&nbsp;&nbsp;Always Secure.
             </p>
 
@@ -256,17 +260,17 @@ function HeroBanner() {
                   {m.abbr}
                 </div>
               ))}
-              <span className="ml-1 text-sm text-gray-400 font-medium">
+              <span className="ml-1 text-sm font-medium text-secondary">
                 and much more!
               </span>
             </div>
 
             {/* CTAs */}
             <div className="mt-8 flex items-center gap-3 flex-wrap">
-              <button className="rounded-full bg-yellow-400 px-8 py-3 text-sm font-bold text-black shadow-lg shadow-yellow-400/30 transition-all duration-200 hover:bg-yellow-300 hover:shadow-yellow-300/40 active:scale-95">
+              <button className="rounded-full bg-gradient-to-r from-[#e1334f] to-[#1f5eff] px-8 py-3 text-sm font-bold text-white shadow-lg shadow-blue-500/20 transition-all duration-200 hover:-translate-y-0.5 active:scale-95">
                 Sign Up Now
               </button>
-              <button className="rounded-full border border-white/20 px-8 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-white/10 active:scale-95">
+              <button className="rounded-full border border-accent/15 bg-white/80 px-8 py-3 text-sm font-semibold text-primary transition-all duration-200 hover:border-accent/30 hover:bg-white active:scale-95">
                 Log In
               </button>
             </div>
@@ -275,20 +279,20 @@ function HeroBanner() {
           {/* Right: decorative wallet visual */}
           <div className="relative hidden lg:flex shrink-0 items-center justify-center w-80 h-72">
             {/* Outer glow ring */}
-            <div className="absolute inset-0 rounded-full bg-yellow-400/10 blur-2xl" />
+            <div className="absolute inset-0 rounded-full bg-blue-500/12 blur-2xl" />
             {/* Central coin */}
             <div
               className="relative z-10 flex h-40 w-40 items-center justify-center rounded-full shadow-2xl"
               style={{
                 background:
-                  "radial-gradient(circle at 35% 35%,#fde68a,#f59e0b 50%,#b45309)",
+                  "radial-gradient(circle at 35% 35%,#ffffff,#dbe7ff 48%,#1f5eff)",
                 boxShadow:
-                  "0 0 60px rgba(251,191,36,0.4), 0 20px 60px rgba(0,0,0,0.5)",
+                  "0 0 60px rgba(31,94,255,0.22), 0 24px 60px rgba(19,49,112,0.22)",
               }}
             >
               <span
                 className="text-6xl font-black"
-                style={{ color: "#7c2d12", textShadow: "0 2px 6px rgba(0,0,0,0.3)" }}
+                style={{ color: "#e1334f", textShadow: "0 2px 6px rgba(255,255,255,0.26)" }}
               >
                 ₱
               </span>
@@ -312,7 +316,9 @@ function HeroBanner() {
                   right: (coin as { right?: string }).right,
                   bottom: (coin as { bottom?: string }).bottom,
                   background:
-                    "radial-gradient(circle at 35% 35%,#fde68a,#d97706)",
+                    i % 2 === 0
+                      ? "radial-gradient(circle at 35% 35%,#ffd8df,#e1334f)"
+                      : "radial-gradient(circle at 35% 35%,#dce7ff,#1f5eff)",
                   animation: `float 3s ease-in-out ${coin.delay} infinite alternate`,
                 }}
               >
@@ -325,7 +331,7 @@ function HeroBanner() {
               (pos, i) => (
                 <div
                   key={i}
-                  className={`absolute ${pos} text-yellow-300 select-none`}
+                  className={`absolute ${pos} select-none ${i % 2 === 0 ? "text-[#e1334f]" : "text-[#1f5eff]"}`}
                   style={{
                     fontSize: i % 2 === 0 ? "18px" : "12px",
                     animation: `pulse 2s ease-in-out ${i * 0.5}s infinite`,
@@ -351,13 +357,13 @@ function HeroBanner() {
 
 function ProviderBar() {
   return (
-    <section className="bg-[#111111] py-4 border-b border-white/5">
+    <section className="border-b border-border bg-white/75 py-4 backdrop-blur-sm">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-around gap-4 overflow-x-auto scrollbar-none">
           {providers.map((p) => (
             <button
               key={p.name}
-              className={`shrink-0 cursor-pointer transition-opacity duration-150 hover:opacity-80 ${p.style}`}
+              className={`shrink-0 cursor-pointer rounded-full bg-white px-4 py-2 shadow-[0_10px_24px_rgba(19,49,112,0.05)] ring-1 ring-border transition-all duration-150 hover:-translate-y-0.5 hover:shadow-[0_14px_28px_rgba(31,94,255,0.08)] ${p.style}`}
             >
               {p.name}
             </button>
@@ -370,7 +376,7 @@ function ProviderBar() {
 
 function CategoryIcons() {
   return (
-    <section className="bg-white py-5 border-b border-gray-100">
+    <section className="border-b border-border bg-white py-5">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex gap-4 overflow-x-auto scrollbar-none pb-1">
           {gameCategories.map((cat) => (
@@ -379,12 +385,12 @@ function CategoryIcons() {
               className="group shrink-0 flex flex-col items-center gap-2 transition-transform duration-150 hover:-translate-y-0.5"
             >
               <div
-                className="flex h-14 w-14 items-center justify-center rounded-full bg-gray-50 text-2xl shadow-sm transition-all duration-150 group-hover:shadow-md"
+                className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-white to-bg-alt text-2xl shadow-sm transition-all duration-150 group-hover:shadow-md"
                 style={{ border: `2px solid ${cat.ring}22`, boxShadow: `0 0 0 2px ${cat.ring}22` }}
               >
                 {cat.emoji}
               </div>
-              <span className="text-[11px] font-medium text-gray-600 whitespace-nowrap leading-tight text-center max-w-[64px]">
+              <span className="max-w-[64px] whitespace-nowrap text-center text-[11px] font-medium leading-tight text-secondary">
                 {cat.label}
               </span>
             </button>
@@ -397,17 +403,17 @@ function CategoryIcons() {
 
 function SportsSection() {
   return (
-    <section className="bg-gray-50 py-6 border-b border-gray-200">
+    <section className="overflow-hidden rounded-[1.8rem] border border-border bg-white py-6 shadow-[0_24px_80px_rgba(19,49,112,0.05)]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white text-sm">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#e1334f] to-[#1f5eff] text-sm text-white">
               ⚽
             </div>
-            <h2 className="text-lg font-bold text-gray-900">Sportsbook</h2>
+            <h2 className="text-lg font-bold text-primary">Sportsbook</h2>
           </div>
-          <button className="flex items-center gap-1 text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">
+          <button className="flex items-center gap-1 text-sm font-medium text-accent transition-colors hover:text-[#163fae]">
             Show All <ChevronRight className="w-4 h-4" />
           </button>
         </div>
@@ -419,8 +425,8 @@ function SportsSection() {
               key={tab}
               className={`shrink-0 rounded-full px-4 py-1.5 text-sm font-medium border transition-all duration-150 ${
                 i === 0
-                  ? "bg-blue-600 text-white border-blue-600"
-                  : "bg-white text-gray-600 border-gray-200 hover:border-blue-300 hover:text-blue-600"
+                  ? "border-transparent bg-gradient-to-r from-[#e1334f] to-[#1f5eff] text-white shadow-[0_12px_30px_rgba(31,94,255,0.18)]"
+                  : "border-border bg-white text-secondary hover:border-accent/25 hover:text-accent"
               }`}
             >
               {tab}
@@ -429,9 +435,9 @@ function SportsSection() {
         </div>
 
         {/* Upcoming Matches Table */}
-        <div className="rounded-xl overflow-hidden border border-gray-200 bg-white shadow-sm">
+        <div className="overflow-hidden rounded-xl border border-border bg-white shadow-sm">
           {/* Table header */}
-          <div className="grid grid-cols-[1fr_auto_auto_auto] gap-0 bg-gray-800 text-white text-xs font-semibold uppercase tracking-wide px-4 py-3">
+          <div className="grid grid-cols-[1fr_auto_auto_auto] gap-0 bg-gradient-to-r from-[#17397a] via-[#1f5eff] to-[#4f86ff] px-4 py-3 text-xs font-semibold uppercase tracking-wide text-white">
             <span>Match</span>
             <span className="w-16 text-center">1</span>
             <span className="w-16 text-center">X</span>
@@ -441,20 +447,20 @@ function SportsSection() {
           {upcomingMatches.map((m, i) => (
             <div
               key={i}
-              className={`grid grid-cols-[1fr_auto_auto_auto] gap-0 px-4 py-3 items-center border-b border-gray-100 last:border-0 transition-colors duration-100 hover:bg-blue-50/50 ${
-                i % 2 === 0 ? "bg-white" : "bg-gray-50/60"
+              className={`grid grid-cols-[1fr_auto_auto_auto] gap-0 px-4 py-3 items-center border-b border-border-light last:border-0 transition-colors duration-100 hover:bg-accent-bg/50 ${
+                i % 2 === 0 ? "bg-white" : "bg-bg-alt/70"
               }`}
             >
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="rounded bg-blue-100 px-1.5 py-0.5 text-[10px] font-bold text-blue-700 uppercase">
+                  <span className="rounded bg-accent-bg px-1.5 py-0.5 text-[10px] font-bold uppercase text-accent">
                     {m.league}
                   </span>
-                  <span className="text-[11px] text-gray-400">{m.time}</span>
+                  <span className="text-[11px] text-tertiary">{m.time}</span>
                 </div>
-                <div className="mt-1 text-sm font-semibold text-gray-900">
+                <div className="mt-1 text-sm font-semibold text-primary">
                   {m.home}{" "}
-                  <span className="text-gray-400 font-normal mx-1">vs</span>{" "}
+                  <span className="mx-1 font-normal text-tertiary">vs</span>{" "}
                   {m.away}
                 </div>
               </div>
@@ -463,8 +469,8 @@ function SportsSection() {
                   key={j}
                   className={`w-16 rounded-lg py-2 text-sm font-bold text-center transition-all duration-150 ${
                     odd === "-"
-                      ? "text-gray-300 cursor-not-allowed"
-                      : "bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white border border-blue-100 hover:border-blue-600"
+                      ? "cursor-not-allowed text-gray-300"
+                      : "border border-accent/10 bg-accent-bg text-accent hover:bg-accent hover:text-white hover:border-accent"
                   }`}
                 >
                   {odd}
@@ -597,12 +603,12 @@ function SectionHeader({ title, icon }: { title: string; icon: string }) {
   return (
     <div className="flex items-center justify-between mb-4">
       <div className="flex items-center gap-3">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-900 text-white text-sm">
+        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#e1334f] to-[#1f5eff] text-sm text-white shadow-[0_10px_24px_rgba(31,94,255,0.18)]">
           {icon}
         </div>
-        <h2 className="text-lg font-bold text-gray-900">{title}</h2>
+        <h2 className="text-lg font-bold text-primary">{title}</h2>
       </div>
-      <button className="flex items-center gap-1 text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">
+      <button className="flex items-center gap-1 text-sm font-medium text-secondary transition-colors hover:text-accent">
         Show All <ChevronRight className="w-4 h-4" />
       </button>
     </div>
@@ -627,16 +633,16 @@ function HomeFooter() {
   };
 
   return (
-    <footer className="bg-[#111111] text-gray-400">
+    <footer className="border-t border-border bg-[linear-gradient(180deg,#ffffff_0%,#f4f7ff_100%)] text-secondary">
       {/* Social row */}
-      <div className="border-b border-white/10 py-5">
+      <div className="border-b border-border py-5">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-center gap-3 flex-wrap">
           {socialLinks.map((s) => (
             <button
               key={s.label}
               title={s.label}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-sm font-bold text-white transition-all duration-150 hover:scale-110"
-              style={{ backgroundColor: s.color + "22" }}
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-white text-sm font-bold text-primary transition-all duration-150 hover:scale-110"
+              style={{ boxShadow: `0 0 0 1px ${s.color}18 inset` }}
             >
               {s.icon}
             </button>
@@ -650,13 +656,13 @@ function HomeFooter() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
             {Object.entries(footerLinks).map(([section, links]) => (
               <div key={section}>
-                <h4 className="mb-3 text-xs font-bold uppercase tracking-widest text-white/40">
+                <h4 className="mb-3 text-xs font-bold uppercase tracking-widest text-tertiary">
                   {section}
                 </h4>
                 <ul className="space-y-2">
                   {links.map((link) => (
                     <li key={link}>
-                      <button className="text-sm text-gray-400 hover:text-white transition-colors duration-150 text-left">
+                      <button className="text-left text-sm text-secondary transition-colors duration-150 hover:text-accent">
                         {link}
                       </button>
                     </li>
@@ -669,19 +675,19 @@ function HomeFooter() {
       </div>
 
       {/* Responsible gaming logos */}
-      <div className="border-t border-white/10 py-5">
+      <div className="border-t border-border py-5">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-1">
-            <img src="/logo.png" alt="Alowin" className="h-6 w-auto opacity-60" />
+            <img src="/logo.png" alt="Alowin" className="h-6 w-auto opacity-75" />
           </div>
-          <p className="text-xs text-gray-600 text-center">
+          <p className="text-center text-xs text-tertiary">
             © 2026 Alowin. All rights reserved. Play Responsibly. 18+
           </p>
           <div className="flex items-center gap-3">
             {["GamCare", "BeGambleAware"].map((badge) => (
               <div
                 key={badge}
-                className="rounded border border-white/10 px-3 py-1 text-[10px] font-semibold text-gray-500 uppercase tracking-wider"
+                className="rounded border border-border bg-white px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-secondary"
               >
                 {badge}
               </div>
@@ -697,20 +703,20 @@ function HomeFooter() {
 
 export default function HomePage() {
   return (
-    <div className="bg-gray-50" style={{ paddingTop: "50px" }}>
+    <div className="bg-bg" style={{ paddingTop: "50px" }}>
       <HeroBanner />
       <ProviderBar />
       <CategoryIcons />
 
       {/* Sports Section */}
-      <div className="bg-gray-50 py-8">
+      <div className="bg-bg py-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SportsSection />
         </div>
       </div>
 
       {/* Casino Games */}
-      <section className="bg-white py-8 border-t border-gray-100">
+      <section className="border-t border-border bg-white py-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader title="Casino Games" icon="🎰" />
           <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-6 gap-3">
@@ -722,7 +728,7 @@ export default function HomePage() {
       </section>
 
       {/* Live Casino */}
-      <section className="bg-gray-50 py-8 border-t border-gray-100">
+      <section className="border-t border-border bg-bg py-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader title="Live Casino" icon="🎬" />
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
@@ -734,7 +740,7 @@ export default function HomePage() {
       </section>
 
       {/* Mini Games */}
-      <section className="bg-white py-8 border-t border-gray-100">
+      <section className="border-t border-border bg-white py-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader title="Games" icon="🎮" />
           <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">

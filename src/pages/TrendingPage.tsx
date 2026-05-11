@@ -39,8 +39,8 @@ export default function TrendingPage() {
                   onClick={() => setActiveFilter(f)}
                   className={`shrink-0 px-4 py-1.5 text-sm font-medium rounded-full transition-all duration-200 ${
                     activeFilter === f
-                      ? "bg-black text-white"
-                      : "text-secondary hover:text-primary hover:bg-white"
+                      ? "bg-gradient-to-r from-[#e1334f] to-[#1f5eff] text-white shadow-[0_12px_30px_rgba(31,94,255,0.2)]"
+                      : "text-secondary hover:bg-white hover:text-accent"
                   }`}
                 >
                   {f}
@@ -72,7 +72,7 @@ export default function TrendingPage() {
         </div>
       </main>
 
-      <footer className="border-t border-border bg-white">
+      <footer className="border-t border-border bg-white/90">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center">

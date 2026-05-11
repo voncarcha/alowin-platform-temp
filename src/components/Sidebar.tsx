@@ -6,7 +6,7 @@ function BreakingNewsList({ items }: { items: BreakingItem[] }) {
     <div>
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-base font-semibold text-primary">Breaking News</h3>
-        <span className="text-[11px] font-semibold text-red-500 bg-red-50 px-2 py-0.5 rounded-md uppercase">
+        <span className="rounded-md bg-accent-warm-bg px-2 py-0.5 text-[11px] font-semibold uppercase text-[#d12d49]">
           Live
         </span>
       </div>
@@ -17,7 +17,7 @@ function BreakingNewsList({ items }: { items: BreakingItem[] }) {
             className="w-full flex items-center justify-between gap-3 p-3 rounded-xl hover:bg-bg transition-colors duration-200 group text-left"
           >
             <div className="min-w-0 flex-1">
-              <p className="text-sm font-medium text-primary truncate group-hover:text-black transition-colors">
+              <p className="truncate text-sm font-medium text-primary transition-colors group-hover:text-accent">
                 {item.title}
               </p>
               <span className="text-[11px] text-tertiary">{item.category}</span>
@@ -50,11 +50,11 @@ function HotTopicsList({ items }: { items: HotTopic[] }) {
             key={item.id}
             className="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-bg transition-colors duration-200 group text-left"
           >
-            <span className="w-6 h-6 rounded-lg bg-bg text-primary text-xs font-bold flex items-center justify-center shrink-0">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-accent-bg text-xs font-bold text-accent">
               {item.rank}
             </span>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-primary truncate group-hover:text-black transition-colors">
+              <p className="truncate text-sm font-medium text-primary transition-colors group-hover:text-accent">
                 {item.title}
               </p>
             </div>
@@ -75,15 +75,15 @@ export default function Sidebar({
 }) {
   return (
     <div className="space-y-6">
-      <div className="bg-white rounded-[1.4rem] border border-border shadow-[0_24px_80px_rgba(0,0,0,0.04)] p-5">
+      <div className="rounded-[1.4rem] border border-border bg-white p-5 shadow-[0_24px_80px_rgba(19,49,112,0.05)]">
         <BreakingNewsList items={breaking} />
       </div>
 
-      <div className="bg-white rounded-[1.4rem] border border-border shadow-[0_24px_80px_rgba(0,0,0,0.04)] p-5">
+      <div className="rounded-[1.4rem] border border-border bg-white p-5 shadow-[0_24px_80px_rgba(19,49,112,0.05)]">
         <HotTopicsList items={hotTopics} />
       </div>
 
-      <button className="w-full group flex items-center justify-center gap-2 py-3 text-sm font-medium text-white bg-black hover:bg-neutral-900 rounded-full shadow-[0_18px_60px_rgba(0,0,0,0.35)] hover:-translate-y-1 transition-all duration-200">
+      <button className="group flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#e1334f] to-[#1f5eff] py-3 text-sm font-medium text-white shadow-[0_18px_60px_rgba(31,94,255,0.28)] transition-all duration-200 hover:-translate-y-1 hover:from-[#d62d49] hover:to-[#174ee0]">
         Explore all markets
         <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
       </button>

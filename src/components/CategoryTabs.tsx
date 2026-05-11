@@ -73,7 +73,7 @@ export default function CategoryTabs() {
   };
 
   return (
-    <div className="sticky top-[57px] sm:top-[73px] z-40 border-b border-border-light/70 shadow-sm" style={{backgroundColor: "#ffffff"}}>
+    <div className="sticky top-[57px] sm:top-[73px] z-40 border-b border-border-light/80 bg-white/90 shadow-sm backdrop-blur-xl">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
         {canScrollLeft && (
           <button
@@ -97,21 +97,21 @@ export default function CategoryTabs() {
                   transition-all duration-200 rounded-full whitespace-nowrap border
                   ${
                     isActive
-                      ? "text-white bg-gradient-to-r from-gray-900 to-gray-800 border-gray-900 shadow-md shadow-gray-900/20"
+                      ? "text-white bg-gradient-to-r from-[#e1334f] via-[#d74059] to-[#1f5eff] border-transparent shadow-md shadow-[#1f5eff]/20"
                       : cat.href
-                      ? "text-secondary bg-white border-gray-200 hover:text-gray-900 hover:border-gray-300 hover:bg-gray-50 cursor-pointer"
-                      : "text-secondary bg-white border-gray-200 opacity-60 cursor-not-allowed"
+                      ? "text-secondary bg-white/90 border-border hover:text-accent hover:border-accent/20 hover:bg-accent-bg/70 cursor-pointer"
+                      : "text-secondary bg-white/90 border-border opacity-60 cursor-not-allowed"
                   }
                 `}
               >
-                <Icon className={`w-3.5 h-3.5 ${isActive ? "text-white/80" : "text-gray-400"}`} />
+                <Icon className={`w-3.5 h-3.5 ${isActive ? "text-white/80" : "text-tertiary"}`} />
                 {cat.label}
                 {cat.badge && (
                   <span
                     className={`
                       ml-0.5 inline-flex items-center px-1.5 py-0 rounded-full text-[10px] font-bold uppercase tracking-wide text-white
                       ${cat.badge.color}
-                      ${isActive ? "opacity-90 ring-1 ring-white/30" : "ring-1 ring-black/5"}
+                      ${isActive ? "opacity-90 ring-1 ring-white/30" : "ring-1 ring-accent/10"}
                     `}
                   >
                     {cat.badge.text}

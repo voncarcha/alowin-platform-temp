@@ -25,14 +25,14 @@ export default function MarketCard({ market }: { market: Market }) {
   const chartColor = market.probability_yes >= 50 ? "#22c55e" : "#ef4444";
 
   return (
-    <div className="group bg-white rounded-[1.4rem] border border-border shadow-[0_24px_80px_rgba(0,0,0,0.04)] hover:shadow-[0_30px_100px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col">
+    <div className="group flex flex-col rounded-[1.4rem] border border-border bg-white p-5 shadow-[0_24px_80px_rgba(19,49,112,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-accent/20 hover:shadow-[0_30px_100px_rgba(31,94,255,0.12)]">
       <div className="flex items-start gap-2 mb-3">
         {market.tag && (
           <span
             className={`shrink-0 text-[10px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider ${
               market.tag === "LIVE"
-                ? "bg-red-50 text-red-600"
-                : "bg-neutral-100 text-neutral-600"
+                ? "bg-accent-warm-bg text-[#d12d49]"
+                : "bg-accent-bg text-accent"
             }`}
           >
             {market.tag === "LIVE" && (
@@ -41,7 +41,7 @@ export default function MarketCard({ market }: { market: Market }) {
             {market.tag}
           </span>
         )}
-        <span className="text-[11px] font-medium text-secondary bg-bg px-2 py-0.5 rounded-md shrink-0">
+        <span className="shrink-0 rounded-md bg-bg-alt px-2 py-0.5 text-[11px] font-medium text-secondary">
           {market.category}
         </span>
       </div>
@@ -70,10 +70,10 @@ export default function MarketCard({ market }: { market: Market }) {
       </div>
 
       <div className="flex gap-2 mt-auto">
-        <button className="flex-1 py-2.5 text-sm font-semibold text-green-800 bg-green-100 hover:bg-green-200 border border-green-200 rounded-full transition-all duration-200 active:scale-95 shadow-[0_4px_12px_rgba(34,197,94,0.15)]">
+        <button className="flex-1 rounded-full border border-green-200 bg-green-100 py-2.5 text-sm font-semibold text-green-800 shadow-[0_4px_12px_rgba(34,197,94,0.15)] transition-all duration-200 active:scale-95 hover:bg-green-200">
           YES {market.probability_yes}%
         </button>
-        <button className="flex-1 py-2.5 text-sm font-semibold text-red-800 bg-red-100 hover:bg-red-200 border border-red-200 rounded-full transition-all duration-200 active:scale-95 shadow-[0_4px_12px_rgba(239,68,68,0.15)]">
+        <button className="flex-1 rounded-full border border-red-200 bg-red-100 py-2.5 text-sm font-semibold text-red-800 shadow-[0_4px_12px_rgba(239,68,68,0.15)] transition-all duration-200 active:scale-95 hover:bg-red-200">
           NO {market.probability_no}%
         </button>
       </div>
