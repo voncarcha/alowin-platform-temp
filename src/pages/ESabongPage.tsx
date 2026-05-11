@@ -38,7 +38,7 @@ const liveBattles: LiveBattle[] = [
     arena: "Main Broadcast",
     round: "Round 18",
     viewers: "12.4K",
-    handle: "PHP 1.8M",
+    handle: "₱1.8M",
     startTime: "7:45 PM",
     status: "LIVE NOW",
     momentum: 92,
@@ -53,7 +53,7 @@ const liveBattles: LiveBattle[] = [
     arena: "Championship Ring",
     round: "Round 12",
     viewers: "8.7K",
-    handle: "PHP 980K",
+    handle: "₱980K",
     startTime: "8:10 PM",
     status: "HEATING UP",
     momentum: 74,
@@ -68,7 +68,7 @@ const liveBattles: LiveBattle[] = [
     arena: "Night Session",
     round: "Round 26",
     viewers: "15.1K",
-    handle: "PHP 2.3M",
+    handle: "₱2.3M",
     startTime: "8:35 PM",
     status: "TRENDING",
     momentum: 88,
@@ -83,7 +83,7 @@ const liveBattles: LiveBattle[] = [
     arena: "Quick Match",
     round: "Round 06",
     viewers: "5.4K",
-    handle: "PHP 420K",
+    handle: "₱420K",
     startTime: "9:00 PM",
     status: "FAST PICK",
     momentum: 61,
@@ -97,7 +97,7 @@ const liveBattles: LiveBattle[] = [
 const lobbyStats = [
   { label: "Rooms live", value: "4", icon: Radio },
   { label: "Peak crowd", value: "15.1K", icon: Users },
-  { label: "Total handle", value: "PHP 5.5M", icon: Trophy },
+  { label: "Total handle", value: "₱5.5M", icon: Trophy },
   { label: "Stream uptime", value: "98%", icon: ShieldCheck },
 ];
 
@@ -341,14 +341,14 @@ export default function ESabongPage() {
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <button
                 type="button"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#e1334f] to-[#1f5eff] px-6 text-sm font-semibold text-white shadow-[0_16px_45px_rgba(31,94,255,0.24)] transition hover:-translate-y-0.5 active:scale-95"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#e1334f] to-[#1f5eff] px-6 py-2 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(31,94,255,0.2)] transition-all duration-200 hover:-translate-y-0.5 active:scale-95"
               >
                 <Play className="h-4 w-4 fill-current" />
                 Join Top Room
               </button>
               <button
                 type="button"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border bg-white px-6 text-sm font-semibold text-secondary transition hover:border-accent/25 hover:text-accent active:scale-95"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border bg-white px-6 text-sm py-2 font-semibold text-secondary shadow-[0_12px_30px_rgba(19,49,112,0.06)] transition-all duration-200 hover:border-accent/25 hover:text-accent active:scale-95"
               >
                 <Sparkles className="h-4 w-4 text-accent" />
                 View Lineup
@@ -382,7 +382,7 @@ export default function ESabongPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
           <LiveBattleCard battle={spotlight} />
           {liveBattles.slice(1).map((battle) => (
             <LiveBattleCard key={battle.id} battle={battle} />
