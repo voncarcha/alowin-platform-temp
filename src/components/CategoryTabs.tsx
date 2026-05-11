@@ -22,12 +22,12 @@ interface TabItem {
 
 const categories: TabItem[] = [
   { label: "Home", icon: Home, href: "/" },
-  { label: "E-Lotto", icon: Ticket, href: "/e-lotto" },
   { label: "Sportsbook", icon: Trophy, href: "/sportsbook" },
-  { label: "Arena Console", badge: { text: "Free", color: "bg-emerald-500" }, icon: Crown, href: "/arena-console" },
+  { label: "E-Sabong", badge: { text: "New", color: "bg-rose-500" }, icon: Crown, href: "/e-sabong" },
+  { label: "E-Lotto", badge: { text: "New", color: "bg-rose-500" }, icon: Ticket, href: "/e-lotto" },
+  { label: "Prediction", icon: Crosshair, href: "/trending" },
   { label: "Casino", icon: Dice5, href: "/casino" },
   { label: "Live Casino", icon: Radio, href: "/live-casino" },
-  { label: "Prediction", icon: Crosshair, href: "/trending" },
   { label: "Promotions", icon: Tag },
 ];
 
@@ -36,7 +36,8 @@ const activeTabByPath: Record<string, string> = {
   "/trending": "Prediction",
   "/e-lotto": "E-Lotto",
   "/sportsbook": "Sportsbook",
-  "/arena-console": "Arena Console",
+  "/e-sabong": "E-Sabong",
+  "/arena-console": "E-Sabong",
   "/casino": "Casino",
   "/live-casino": "Live Casino",
 };

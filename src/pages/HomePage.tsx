@@ -11,28 +11,6 @@ const paymentMethods = [
   { name: "Coins.ph", bg: "#FF6B00", abbr: "C" },
 ];
 
-const providers = [
-  { name: "JILI", style: "text-[#e1334f] font-black text-2xl tracking-wider" },
-  { name: "Evolution", style: "text-[#1f5eff] font-bold text-xl tracking-wide" },
-  { name: "PG Soft", style: "text-primary font-bold text-xl" },
-  { name: "Pragmatic", style: "text-[#d12d49] font-black text-xl tracking-wide" },
-];
-
-const gameCategories = [
-  { label: "Deposit Now", emoji: "💰", ring: "#22c55e" },
-  { label: "Slots", emoji: "🎰", ring: "#3b82f6" },
-  { label: "Fishing", emoji: "🎣", ring: "#06b6d4" },
-  { label: "Birthday Ball", emoji: "🎂", ring: "#ec4899" },
-  { label: "Mega Ball", emoji: "⚽", ring: "#f59e0b" },
-  { label: "F1 Casino", emoji: "🏎️", ring: "#ef4444" },
-  { label: "Panalo678", emoji: "🃏", ring: "#8b5cf6" },
-  { label: "e-Gaming", emoji: "🎮", ring: "#10b981" },
-  { label: "Horse Racing", emoji: "🐎", ring: "#a16207" },
-  { label: "Sabong", emoji: "🐓", ring: "#dc2626" },
-  { label: "Drag Race", emoji: "🏁", ring: "#1d4ed8" },
-  { label: "Live In Game", emoji: "📺", ring: "#2563eb" },
-];
-
 const casinoGames = [
   {
     name: "SuperAce",
@@ -225,10 +203,6 @@ function HeroBanner() {
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
           {/* Left: content */}
           <div className="flex-1">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/85 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-accent shadow-[0_12px_30px_rgba(31,94,255,0.08)] ring-1 ring-accent/10">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#e1334f]" />
-              Alowin Wallet
-            </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05]">
               Power Up Your
               <br />
@@ -238,7 +212,7 @@ function HeroBanner() {
                   className="underline decoration-[#1f5eff]/50 underline-offset-4 text-[#1f5eff]"
                   style={{ textDecorationStyle: "wavy" }}
                 >
-                  win
+                  pit
                 </span>
               </span>{" "}
               <span className="text-primary">Wallet</span>
@@ -351,52 +325,6 @@ function HeroBanner() {
           to   { transform: translateY(-10px); }
         }
       `}</style>
-    </section>
-  );
-}
-
-function ProviderBar() {
-  return (
-    <section className="border-b border-border bg-white/75 py-4 backdrop-blur-sm">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-around gap-4 overflow-x-auto scrollbar-none">
-          {providers.map((p) => (
-            <button
-              key={p.name}
-              className={`shrink-0 cursor-pointer rounded-full bg-white px-4 py-2 shadow-[0_10px_24px_rgba(19,49,112,0.05)] ring-1 ring-border transition-all duration-150 hover:-translate-y-0.5 hover:shadow-[0_14px_28px_rgba(31,94,255,0.08)] ${p.style}`}
-            >
-              {p.name}
-            </button>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function CategoryIcons() {
-  return (
-    <section className="border-b border-border bg-white py-5">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex gap-4 overflow-x-auto scrollbar-none pb-1">
-          {gameCategories.map((cat) => (
-            <button
-              key={cat.label}
-              className="group shrink-0 flex flex-col items-center gap-2 transition-transform duration-150 hover:-translate-y-0.5"
-            >
-              <div
-                className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-white to-bg-alt text-2xl shadow-sm transition-all duration-150 group-hover:shadow-md"
-                style={{ border: `2px solid ${cat.ring}22`, boxShadow: `0 0 0 2px ${cat.ring}22` }}
-              >
-                {cat.emoji}
-              </div>
-              <span className="max-w-[64px] whitespace-nowrap text-center text-[11px] font-medium leading-tight text-secondary">
-                {cat.label}
-              </span>
-            </button>
-          ))}
-        </div>
-      </div>
     </section>
   );
 }
@@ -616,15 +544,6 @@ function SectionHeader({ title, icon }: { title: string; icon: string }) {
 }
 
 function HomeFooter() {
-  const socialLinks = [
-    { icon: "f", label: "Facebook", color: "#1877F2" },
-    { icon: "in", label: "Instagram", color: "#E1306C" },
-    { icon: "𝕏", label: "Twitter/X", color: "#000000" },
-    { icon: "▶", label: "YouTube", color: "#FF0000" },
-    { icon: "✈", label: "Telegram", color: "#2AABEE" },
-    { icon: "♪", label: "TikTok", color: "#010101" },
-  ];
-
   const footerLinks = {
     About: ["About Us", "Careers", "Press", "Partners"],
     Help: ["FAQ", "Contact Support", "Responsible Gaming", "Self Exclusion"],
@@ -634,22 +553,6 @@ function HomeFooter() {
 
   return (
     <footer className="border-t border-border bg-[linear-gradient(180deg,#ffffff_0%,#f4f7ff_100%)] text-secondary">
-      {/* Social row */}
-      <div className="border-b border-border py-5">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-center gap-3 flex-wrap">
-          {socialLinks.map((s) => (
-            <button
-              key={s.label}
-              title={s.label}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-white text-sm font-bold text-primary transition-all duration-150 hover:scale-110"
-              style={{ boxShadow: `0 0 0 1px ${s.color}18 inset` }}
-            >
-              {s.icon}
-            </button>
-          ))}
-        </div>
-      </div>
-
       {/* Links grid */}
       <div className="py-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -678,10 +581,10 @@ function HomeFooter() {
       <div className="border-t border-border py-5">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-1">
-            <img src="/logo.png" alt="Alowin" className="h-6 w-auto opacity-75" />
+            <img src="/logo.png" alt="Alopit" className="h-6 w-auto opacity-75" />
           </div>
           <p className="text-center text-xs text-tertiary">
-            © 2026 Alowin. All rights reserved. Play Responsibly. 18+
+            © 2026 Alopit. All rights reserved. Play Responsibly. 18+
           </p>
           <div className="flex items-center gap-3">
             {["GamCare", "BeGambleAware"].map((badge) => (
@@ -705,8 +608,6 @@ export default function HomePage() {
   return (
     <div className="bg-bg" style={{ paddingTop: "50px" }}>
       <HeroBanner />
-      <ProviderBar />
-      <CategoryIcons />
 
       {/* Sports Section */}
       <div className="bg-bg py-8">

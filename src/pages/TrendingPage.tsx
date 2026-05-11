@@ -76,7 +76,7 @@ export default function TrendingPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center">
-              <img src="/logo.png" alt="Alowin Markets" className="h-7 w-auto" />
+              <img src="/logo.png" alt="Alopit Markets" className="h-7 w-auto" />
             </div>
             <p className="text-xs text-tertiary">
               Prediction markets for informed decision-making. Not financial advice.

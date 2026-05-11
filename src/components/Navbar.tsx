@@ -9,7 +9,7 @@ export default function Navbar() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           <a href="/" className="flex items-center shrink-0">
-            <img src="/logo.png" alt="Alowin Markets" className="h-8 sm:h-9 w-auto" />
+            <img src="/logo.png" alt="Alopit Markets" className="h-8 sm:h-9 w-auto" />
           </a>
 
           <div className="hidden md:flex flex-1 max-w-md mx-8">
