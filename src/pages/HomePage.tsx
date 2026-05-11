@@ -1,4 +1,19 @@
-import { ChevronRight } from "lucide-react";
+import {
+  CalendarDays,
+  ChevronRight,
+  Clock3,
+  Flame,
+  Gauge,
+  Play,
+  Radio,
+  ShieldCheck,
+  Sparkles,
+  Ticket,
+  Trophy,
+  Users,
+} from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { featuredMatch, matches as sportsbookMatches, sports } from "../data/sportsbook";
 
 /* ─── Mock Data ─────────────────────────────────────────────────────────── */
 
@@ -135,52 +150,79 @@ const miniGames = [
   },
 ];
 
-const upcomingMatches = [
+const sportsbookPreviewMatches = sportsbookMatches.slice(0, 5);
+
+const sabongRooms = [
   {
-    time: "Apr 17, 11:00",
-    league: "NBA",
-    home: "LA Lakers",
-    away: "Golden State",
-    hOdds: "1.85",
-    dOdds: "-",
-    aOdds: "1.95",
+    id: "sbng-1",
+    title: "Sabong Traditional Worldwide",
+    viewers: "12.4K",
+    handle: "₱1.8M",
+    momentum: 92,
+    status: "LIVE NOW",
+    entryWindow: "Open",
+    tone: "from-[#e1334f] via-[#f97316] to-[#1f5eff]",
   },
   {
-    time: "Apr 17, 13:30",
-    league: "NBA",
-    home: "Chicago Bulls",
-    away: "Miami Heat",
-    hOdds: "2.10",
-    dOdds: "-",
-    aOdds: "1.72",
+    id: "sbng-2",
+    title: "Sabong World Cup",
+    viewers: "8.7K",
+    handle: "₱980K",
+    momentum: 74,
+    status: "HEATING UP",
+    entryWindow: "3 min",
+    tone: "from-[#1f5eff] via-[#2563eb] to-[#0f172a]",
   },
   {
-    time: "Apr 17, 16:00",
-    league: "PBA",
-    home: "San Miguel",
-    away: "Ginebra",
-    hOdds: "1.60",
-    dOdds: "-",
-    aOdds: "2.30",
+    id: "sbng-3",
+    title: "Sabong Grand Finals",
+    viewers: "15.1K",
+    handle: "₱2.3M",
+    momentum: 88,
+    status: "TRENDING",
+    entryWindow: "Open",
+    tone: "from-[#111827] via-[#334155] to-[#e1334f]",
+  },
+];
+
+const sabongStats = [
+  { label: "Rooms live", value: "4", icon: Radio },
+  { label: "Peak crowd", value: "15.1K", icon: Users },
+  { label: "Total handle", value: "₱5.5M", icon: Trophy },
+  { label: "Stream uptime", value: "98%", icon: ShieldCheck },
+];
+
+const lottoJackpots = [
+  {
+    game: "Grand Lotto",
+    numbers: ["15", "43", "07", "40", "52", "29"],
+    prize: "₱120M",
+    drawTime: "8:00 PM",
+    date: "May 11, 2026",
   },
   {
-    time: "Apr 18, 10:00",
-    league: "EPL",
-    home: "Man City",
-    away: "Arsenal",
-    hOdds: "1.75",
-    dOdds: "3.50",
-    aOdds: "4.20",
+    game: "Mega Lotto",
+    numbers: ["17", "27", "21", "30", "15", "12"],
+    prize: "₱100M",
+    drawTime: "9:00 PM",
+    date: "May 11, 2026",
   },
   {
-    time: "Apr 18, 12:45",
-    league: "EPL",
-    home: "Liverpool",
-    away: "Chelsea",
-    hOdds: "1.90",
-    dOdds: "3.40",
-    aOdds: "3.80",
+    game: "6D Lotto",
+    numbers: ["7", "8", "0", "2", "3", "2"],
+    prize: "₱80M",
+    drawTime: "9:00 PM",
+    date: "May 11, 2026",
   },
+];
+
+const drawSchedule = [
+  { game: "2D Lotto", time: "2:00 PM", live: true },
+  { game: "3D Lotto", time: "5:00 PM", live: true },
+  { game: "Grand Lotto", time: "8:00 PM", live: false },
+  { game: "6D Lotto", time: "9:00 PM", live: false },
+  { game: "Mega Lotto", time: "9:00 PM", live: false },
+  { game: "4D Lotto", time: "9:00 PM", live: false },
 ];
 
 /* ─── Sub-components ────────────────────────────────────────────────────── */
@@ -331,81 +373,425 @@ function HeroBanner() {
 
 function SportsSection() {
   return (
-    <section className="overflow-hidden rounded-[1.8rem] border border-border bg-white py-6 shadow-[0_24px_80px_rgba(19,49,112,0.05)]">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#e1334f] to-[#1f5eff] text-sm text-white">
-              ⚽
+    <section className="overflow-hidden rounded-[1.8rem] border border-border bg-white shadow-[0_24px_80px_rgba(19,49,112,0.06)]">
+      <div className="grid lg:grid-cols-[0.92fr_1.08fr]">
+        <div className="relative overflow-hidden bg-[#101827] p-6 text-white sm:p-7 lg:p-8">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(225,51,79,0.48),transparent_26%),radial-gradient(circle_at_86%_18%,rgba(31,94,255,0.48),transparent_25%),linear-gradient(135deg,#101827_0%,#1c2c49_48%,#4a121c_100%)]" />
+          <div className="absolute -right-8 -top-12 h-48 w-48 rounded-full border-[24px] border-white/10" />
+          <div className="relative">
+            <div className="mb-8 flex items-center justify-between gap-3">
+              <span className="inline-flex items-center gap-2 rounded-full bg-white/12 px-3 py-1.5 text-xs font-black uppercase tracking-[0.16em] backdrop-blur-md">
+                <span className="h-2 w-2 rounded-full bg-red-400 animate-pulse" />
+                Live board
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-bold text-white/85 backdrop-blur-md">
+                <Trophy className="h-3.5 w-3.5" />
+                {featuredMatch.league}
+              </span>
             </div>
-            <h2 className="text-lg font-bold text-primary">Sportsbook</h2>
-          </div>
-          <button className="flex items-center gap-1 text-sm font-medium text-accent transition-colors hover:text-[#163fae]">
-            Show All <ChevronRight className="w-4 h-4" />
-          </button>
-        </div>
 
-        {/* Sport tabs */}
-        <div className="flex gap-2 mb-5 overflow-x-auto scrollbar-none">
-          {["🏀 NBA", "⚽ EPL", "🏀 PBA", "🥊 Boxing", "🎾 Tennis", "🏈 NFL"].map((tab, i) => (
-            <button
-              key={tab}
-              className={`shrink-0 rounded-full px-4 py-1.5 text-sm font-medium border transition-all duration-150 ${
-                i === 0
-                  ? "border-transparent bg-gradient-to-r from-[#e1334f] to-[#1f5eff] text-white shadow-[0_12px_30px_rgba(31,94,255,0.18)]"
-                  : "border-border bg-white text-secondary hover:border-accent/25 hover:text-accent"
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
+            <p className="text-xs font-black uppercase tracking-[0.24em] text-white/55">Featured sportsbook match</p>
+            <h2 className="mt-2 max-w-lg text-3xl font-black leading-tight tracking-tight sm:text-4xl">
+              {featuredMatch.home}
+              <span className="mx-2 text-white/35">vs</span>
+              {featuredMatch.away}
+            </h2>
+            <p className="mt-3 max-w-md text-sm font-medium leading-6 text-white/70">{featuredMatch.headline}</p>
 
-        {/* Upcoming Matches Table */}
-        <div className="overflow-hidden rounded-xl border border-border bg-white shadow-sm">
-          {/* Table header */}
-          <div className="grid grid-cols-[1fr_auto_auto_auto] gap-0 bg-gradient-to-r from-[#17397a] via-[#1f5eff] to-[#4f86ff] px-4 py-3 text-xs font-semibold uppercase tracking-wide text-white">
-            <span>Match</span>
-            <span className="w-16 text-center">1</span>
-            <span className="w-16 text-center">X</span>
-            <span className="w-16 text-center">2</span>
-          </div>
-
-          {upcomingMatches.map((m, i) => (
-            <div
-              key={i}
-              className={`grid grid-cols-[1fr_auto_auto_auto] gap-0 px-4 py-3 items-center border-b border-border-light last:border-0 transition-colors duration-100 hover:bg-accent-bg/50 ${
-                i % 2 === 0 ? "bg-white" : "bg-bg-alt/70"
-              }`}
-            >
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="rounded bg-accent-bg px-1.5 py-0.5 text-[10px] font-bold uppercase text-accent">
-                    {m.league}
-                  </span>
-                  <span className="text-[11px] text-tertiary">{m.time}</span>
-                </div>
-                <div className="mt-1 text-sm font-semibold text-primary">
-                  {m.home}{" "}
-                  <span className="mx-1 font-normal text-tertiary">vs</span>{" "}
-                  {m.away}
-                </div>
-              </div>
-              {[m.hOdds, m.dOdds, m.aOdds].map((odd, j) => (
+            <div className="mt-6 grid grid-cols-2 gap-2">
+              {[
+                { label: featuredMatch.home, odd: featuredMatch.odds.home },
+                { label: featuredMatch.away, odd: featuredMatch.odds.away },
+              ].map((pick) => (
                 <button
-                  key={j}
-                  className={`w-16 rounded-lg py-2 text-sm font-bold text-center transition-all duration-150 ${
-                    odd === "-"
-                      ? "cursor-not-allowed text-gray-300"
-                      : "border border-accent/10 bg-accent-bg text-accent hover:bg-accent hover:text-white hover:border-accent"
-                  }`}
+                  key={pick.label}
+                  type="button"
+                  className="rounded-2xl border border-white/14 bg-white/12 p-3 text-left backdrop-blur-md transition hover:-translate-y-0.5 hover:bg-white/18"
                 >
-                  {odd}
+                  <p className="truncate text-xs font-bold text-white/65">{pick.label}</p>
+                  <p className="mt-1 text-2xl font-black text-white">{pick.odd}</p>
                 </button>
               ))}
             </div>
-          ))}
+          </div>
+        </div>
+
+        <div className="p-5 sm:p-6">
+          <div className="mb-4 flex gap-2 overflow-x-auto scrollbar-none">
+            {sports.slice(0, 6).map((sport, index) => (
+              <button
+                key={sport.id}
+                type="button"
+                className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm font-bold transition ${
+                  index === 0
+                    ? "border-transparent bg-gradient-to-r from-[#e1334f] to-[#1f5eff] text-white shadow-[0_12px_30px_rgba(31,94,255,0.18)]"
+                    : "border-border bg-white text-secondary hover:border-accent/25 hover:text-accent"
+                }`}
+              >
+                {sport.name}
+                <span className={index === 0 ? "text-white/70" : "text-tertiary"}>{sport.live}</span>
+              </button>
+            ))}
+          </div>
+
+          <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
+            <div className="grid grid-cols-[1fr_58px_58px_58px] gap-1.5 bg-bg-alt/80 px-4 py-3 text-[10px] font-black uppercase tracking-[0.16em] text-secondary sm:grid-cols-[1fr_70px_70px_70px] sm:gap-2">
+              <span>Match</span>
+              <span className="text-center">1</span>
+              <span className="text-center">X</span>
+              <span className="text-center">2</span>
+            </div>
+
+            {sportsbookPreviewMatches.map((match, index) => (
+              <div
+                key={match.id}
+                className={`grid grid-cols-[1fr_58px_58px_58px] items-center gap-1.5 border-t border-border-light px-4 py-3 transition hover:bg-accent-bg/45 sm:grid-cols-[1fr_70px_70px_70px] sm:gap-2 ${
+                  index % 2 === 0 ? "bg-white" : "bg-bg-alt/45"
+                }`}
+              >
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2">
+                    <span className="rounded-md bg-accent-bg px-1.5 py-0.5 text-[10px] font-black uppercase text-accent">
+                      {match.league}
+                    </span>
+                    <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-tertiary">
+                      {match.status === "Live" && <Flame className="h-3 w-3 text-[#e1334f]" />}
+                      {match.date} {match.time}
+                    </span>
+                  </div>
+                  <p className="mt-1 truncate text-sm font-black text-primary">
+                    {match.home}
+                    <span className="mx-1 font-medium text-tertiary">vs</span>
+                    {match.away}
+                  </p>
+                </div>
+                {[match.odds.home, match.odds.draw ?? "-", match.odds.away].map((odd, oddIndex) => (
+                  <button
+                    key={`${match.id}-${oddIndex}`}
+                    type="button"
+                    disabled={odd === "-"}
+                    className={`inline-flex min-h-10 w-full items-center justify-center rounded-xl border px-2 py-2 text-xs font-black leading-none transition active:scale-95 sm:text-sm ${
+                      odd === "-"
+                        ? "cursor-not-allowed border-border-light bg-bg-alt text-tertiary/45"
+                        : oddIndex === 0 && index === 0
+                          ? "border-[#b30012] bg-[#b30012] text-white"
+                          : "border-accent/10 bg-accent-bg text-accent hover:bg-accent hover:text-white"
+                    }`}
+                  >
+                    {odd}
+                  </button>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ESabongHomeSection() {
+  const navigate = useNavigate();
+  const featured = sabongRooms[0];
+
+  return (
+    <section className="overflow-hidden rounded-[1.8rem] border border-border bg-white shadow-[0_24px_80px_rgba(19,49,112,0.06)]">
+      <div className="grid lg:grid-cols-[1fr_1.1fr]">
+        <div className="relative overflow-hidden min-h-[380px] bg-[linear-gradient(135deg,#fff5f7_0%,#ffffff_40%,#eff5ff_100%)] p-6 sm:p-7 lg:p-8">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_30%,rgba(225,51,79,0.12),transparent_45%),radial-gradient(ellipse_at_80%_70%,rgba(31,94,255,0.10),transparent_45%)]" />
+          <div className="absolute -bottom-20 -right-20 h-64 w-64 rounded-full border-[24px] border-[#e1334f]/[0.06]" />
+          <div className="absolute -top-10 -left-10 h-40 w-40 rounded-full border-[20px] border-[#1f5eff]/[0.06]" />
+          <div className="absolute top-1/2 right-8 h-32 w-32 rounded-full bg-[#e1334f]/[0.05] blur-2xl" />
+
+          <div className="relative z-10 flex h-full flex-col justify-between">
+            <div>
+              <div className="mb-6 flex items-center gap-2">
+                <span className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.18em] text-emerald-700 ring-1 ring-emerald-200">
+                  <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
+                  Live Arena
+                </span>
+                <span className="inline-flex items-center gap-2 rounded-full bg-accent-warm-bg px-3 py-1.5 text-[11px] font-bold text-[#e1334f] ring-1 ring-[#e1334f]/10">
+                  <Flame className="h-3 w-3" />
+                  4 rooms active
+                </span>
+              </div>
+
+              <p className="text-[11px] font-black uppercase tracking-[0.28em] text-tertiary">E-Sabong</p>
+              <h2 className="mt-2 text-3xl font-black leading-[0.95] tracking-tight text-primary sm:text-4xl">
+                Live Rooms,
+                <br />
+                <span className="bg-gradient-to-r from-[#e1334f] to-[#1f5eff] bg-clip-text text-transparent">
+                  Real Action
+                </span>
+              </h2>
+              <p className="mt-4 max-w-sm text-sm font-medium leading-6 text-secondary">
+                Follow active broadcasts, compare room momentum, and enter the battle with the clearest signal.
+              </p>
+            </div>
+
+            <div className="mt-8">
+              <p className="mb-3 text-[11px] font-black uppercase tracking-[0.18em] text-tertiary">Featured Room</p>
+              <div className="rounded-2xl border border-border-light bg-white/80 p-4 shadow-sm backdrop-blur-sm">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0">
+                    <p className="truncate text-sm font-bold text-primary">{featured.title}</p>
+                    <div className="mt-2 flex items-center gap-3 text-[11px] font-semibold text-secondary">
+                      <span className="inline-flex items-center gap-1.5">
+                        <Users className="h-3 w-3 text-accent" />
+                        {featured.viewers}
+                      </span>
+                      <span className="inline-flex items-center gap-1.5">
+                        <Gauge className="h-3 w-3 text-accent" />
+                        {featured.handle}
+                      </span>
+                      <span className="inline-flex items-center gap-1.5">
+                        <Clock3 className="h-3 w-3 text-accent" />
+                        {featured.entryWindow}
+                      </span>
+                    </div>
+                  </div>
+                  <span className="shrink-0 rounded-full bg-accent-warm-bg px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-[#e1334f] ring-1 ring-[#e1334f]/10">
+                    {featured.status}
+                  </span>
+                </div>
+
+                <div className="mt-3">
+                  <div className="mb-1.5 flex items-center justify-between text-[10px] font-bold text-tertiary">
+                    <span>Momentum</span>
+                    <span className="text-primary">{featured.momentum}%</span>
+                  </div>
+                  <div className="h-1.5 overflow-hidden rounded-full bg-bg-alt ring-1 ring-border-light">
+                    <div
+                      className="h-full rounded-full bg-gradient-to-r from-[#e1334f] via-[#f97316] to-[#1f5eff]"
+                      style={{ width: `${featured.momentum}%` }}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col border-t border-border-light bg-white p-5 sm:p-6 lg:border-t-0 lg:border-l">
+          <div className="space-y-3 flex-1">
+            {sabongRooms.map((room) => (
+              <button
+                key={room.id}
+                type="button"
+                onClick={() => navigate("/e-sabong")}
+                className="group w-full rounded-2xl border border-border-light bg-bg-alt/40 p-4 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/15 hover:shadow-[0_12px_40px_rgba(31,94,255,0.08)]"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-2">
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(52,211,153,0.5)]" />
+                      <p className="truncate text-sm font-bold text-primary">{room.title}</p>
+                    </div>
+                    <div className="mt-2 flex items-center gap-4 text-[11px] font-semibold text-secondary">
+                      <span className="inline-flex items-center gap-1.5">
+                        <Users className="h-3 w-3 text-accent" />
+                        {room.viewers}
+                      </span>
+                      <span className="inline-flex items-center gap-1.5">
+                        <Gauge className="h-3 w-3 text-accent" />
+                        {room.handle}
+                      </span>
+                      <span className="inline-flex items-center gap-1.5">
+                        <Clock3 className="h-3 w-3 text-accent" />
+                        Entry: {room.entryWindow}
+                      </span>
+                    </div>
+                  </div>
+                  <span
+                    className={`shrink-0 rounded-full px-2.5 py-1 text-[9px] font-black uppercase tracking-wider ${
+                      room.status === "LIVE NOW"
+                        ? "bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200"
+                        : room.status === "TRENDING"
+                          ? "bg-accent-warm-bg text-[#e1334f] ring-1 ring-[#e1334f]/10"
+                          : "bg-accent-bg text-accent ring-1 ring-accent/10"
+                    }`}
+                  >
+                    {room.status}
+                  </span>
+                </div>
+
+                <div className="mt-3">
+                  <div className="mb-1.5 flex items-center justify-between text-[10px] font-bold text-tertiary">
+                    <span>Momentum</span>
+                    <span className="text-primary">{room.momentum}%</span>
+                  </div>
+                  <div className="h-1 overflow-hidden rounded-full bg-bg-alt ring-1 ring-border-light">
+                    <div
+                      className={`h-full rounded-full bg-gradient-to-r ${room.tone} transition-all duration-500`}
+                      style={{ width: `${room.momentum}%` }}
+                    />
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+
+          <div className="mt-5 grid grid-cols-4 gap-2">
+            {sabongStats.map((stat) => {
+              const StatIcon = stat.icon;
+              return (
+                <div
+                  key={stat.label}
+                  className="flex flex-col items-center gap-1.5 rounded-xl border border-border-light bg-bg-alt/60 px-2 py-3 text-center"
+                >
+                  <StatIcon className="h-3.5 w-3.5 text-accent" />
+                  <p className="text-sm font-black leading-none text-primary">{stat.value}</p>
+                  <p className="text-[9px] font-bold uppercase tracking-wider text-tertiary">{stat.label}</p>
+                </div>
+              );
+            })}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => navigate("/e-sabong")}
+            className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#e1334f] to-[#1f5eff] px-5 py-3 text-sm font-black text-white shadow-[0_12px_30px_rgba(31,94,255,0.2)] transition-all duration-200 hover:-translate-y-0.5 active:scale-95"
+          >
+            <Play className="h-4 w-4 fill-current" />
+            Enter the Arena
+            <ChevronRight className="h-4 w-4" />
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ELottoHomeSection() {
+  const navigate = useNavigate();
+
+  return (
+    <section className="overflow-hidden rounded-[1.8rem] border border-border bg-white shadow-[0_24px_80px_rgba(19,49,112,0.06)]">
+      <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="relative overflow-hidden min-h-[420px] bg-[linear-gradient(135deg,#fff5f7_0%,#ffffff_40%,#eff5ff_100%)] p-6 sm:p-7 lg:p-8">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_20%,rgba(225,51,79,0.12),transparent_45%),radial-gradient(ellipse_at_80%_80%,rgba(31,94,255,0.12),transparent_45%)]" />
+          <div className="absolute -top-16 -right-16 h-48 w-48 rounded-full border-[24px] border-[#e1334f]/[0.06]" />
+          <div className="absolute -bottom-12 -left-12 h-40 w-40 rounded-full border-[20px] border-[#1f5eff]/[0.06]" />
+          <div className="absolute top-1/2 right-8 h-32 w-32 rounded-full bg-[#1f5eff]/[0.06] blur-2xl" />
+
+          <div className="relative z-10">
+            <div className="mb-6 flex items-center gap-2">
+              <span className="inline-flex items-center gap-2 rounded-full bg-[#e1334f]/[0.08] px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.18em] text-[#e1334f] ring-1 ring-[#e1334f]/10">
+                <Ticket className="h-3 w-3" />
+                Draw Board
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full bg-[#1f5eff]/[0.08] px-3 py-1.5 text-[11px] font-bold text-[#1f5eff] ring-1 ring-[#1f5eff]/10">
+                <Sparkles className="h-3 w-3" />
+                {drawSchedule.filter((d) => d.live).length} live draws
+              </span>
+            </div>
+
+            <p className="text-[11px] font-black uppercase tracking-[0.28em] text-tertiary">E-Lotto</p>
+            <h2 className="mt-2 text-3xl font-black leading-[0.95] tracking-tight text-primary sm:text-4xl">
+              Winning Numbers,
+              <br />
+              <span className="bg-gradient-to-r from-[#e1334f] to-[#1f5eff] bg-clip-text text-transparent">
+                Ready at a Glance
+              </span>
+            </h2>
+            <p className="mt-4 max-w-sm text-sm font-medium leading-6 text-secondary">
+              Check the latest lottery results, track jackpot prizes, and never miss a draw schedule.
+            </p>
+
+            <div className="mt-7">
+              <p className="mb-3 text-[11px] font-black uppercase tracking-[0.18em] text-tertiary">Latest Grand Lotto</p>
+              <div className="flex flex-wrap gap-2">
+                {lottoJackpots[0].numbers.map((num) => (
+                  <span
+                    key={num}
+                    className="flex h-11 min-w-11 items-center justify-center rounded-full bg-gradient-to-br from-[#ff8a9c] to-[#1f5eff] text-sm font-black text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_8px_20px_rgba(31,94,255,0.2)]"
+                  >
+                    {num}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-6 flex items-center gap-3">
+              <div className="rounded-2xl border border-[#e1334f]/10 bg-[#e1334f]/[0.05] px-4 py-3">
+                <p className="text-[10px] font-bold uppercase tracking-wider text-[#e1334f]/70">Grand Jackpot</p>
+                <p className="mt-0.5 text-2xl font-black text-[#e1334f]">{lottoJackpots[0].prize}</p>
+              </div>
+              <div className="rounded-2xl border border-[#1f5eff]/10 bg-[#1f5eff]/[0.05] px-4 py-3">
+                <p className="text-[10px] font-bold uppercase tracking-wider text-[#1f5eff]/70">Draws Today</p>
+                <p className="mt-0.5 text-2xl font-black text-[#1f5eff]">{drawSchedule.length}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col border-t border-border-light bg-white p-5 sm:p-6 lg:border-t-0 lg:border-l">
+          <div className="space-y-3 flex-1">
+            {lottoJackpots.map((jackpot) => (
+              <div
+                key={jackpot.game}
+                className="group rounded-2xl border border-border-light bg-bg-alt/50 p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/15 hover:shadow-[0_12px_40px_rgba(31,94,255,0.08)]"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2">
+                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-[#e1334f] to-[#1f5eff] text-[10px] font-black text-white">
+                        {jackpot.game.charAt(0)}
+                      </span>
+                      <p className="truncate text-sm font-bold text-primary">{jackpot.game}</p>
+                    </div>
+                    <div className="mt-2.5 flex flex-wrap gap-1.5">
+                      {jackpot.numbers.map((num, i) => (
+                        <span
+                          key={`${jackpot.game}-${num}-${i}`}
+                          className="flex h-7 min-w-7 items-center justify-center rounded-full bg-gradient-to-br from-[#ff667d] to-[#1f5eff] px-1.5 text-[11px] font-black text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.3)]"
+                        >
+                          {num}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="shrink-0 text-right">
+                    <p className="text-lg font-black text-[#e1334f]">{jackpot.prize}</p>
+                    <p className="text-[10px] font-bold text-tertiary">{jackpot.drawTime}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-5 rounded-2xl border border-border-light bg-bg-alt/40 p-4">
+            <p className="mb-3 text-[11px] font-black uppercase tracking-[0.16em] text-tertiary">
+              <CalendarDays className="mr-1.5 inline h-3.5 w-3.5 text-accent" />
+              Draw Schedule
+            </p>
+            <div className="grid grid-cols-3 gap-2">
+              {drawSchedule.slice(0, 6).map((draw) => (
+                <div
+                  key={draw.game}
+                  className="flex items-center gap-2 rounded-xl bg-white px-2.5 py-2 ring-1 ring-border-light"
+                >
+                  <span
+                    className={`h-1.5 w-1.5 shrink-0 rounded-full ${draw.live ? "bg-emerald-500 shadow-[0_0_8px_rgba(52,211,153,0.5)]" : "bg-tertiary/40"}`}
+                  />
+                  <div className="min-w-0">
+                    <p className="truncate text-[11px] font-bold text-primary">{draw.game}</p>
+                    <p className="text-[10px] font-medium text-tertiary">{draw.time}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => navigate("/e-lotto")}
+            className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#e1334f] to-[#1f5eff] px-5 py-3 text-sm font-black text-white shadow-[0_12px_30px_rgba(31,94,255,0.2)] transition-all duration-200 hover:-translate-y-0.5 active:scale-95"
+          >
+            <Sparkles className="h-4 w-4" />
+            Play E-Lotto
+            <ChevronRight className="h-4 w-4" />
+          </button>
         </div>
       </div>
     </section>
@@ -605,16 +991,76 @@ function HomeFooter() {
 /* ─── Main Page ─────────────────────────────────────────────────────────── */
 
 export default function HomePage() {
+  const navigate = useNavigate();
   return (
     <div className="bg-bg" style={{ paddingTop: "50px" }}>
       <HeroBanner />
 
       {/* Sports Section */}
-      <div className="bg-bg py-8">
+      <section className="border-t border-border bg-bg py-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-3">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#e1334f] to-[#1f5eff] text-sm text-white shadow-[0_10px_24px_rgba(31,94,255,0.18)]">
+                <Radio className="h-4 w-4" />
+              </div>
+              <h2 className="text-lg font-bold text-primary">Sportsbook</h2>
+            </div>
+            <button
+              type="button"
+              onClick={() => navigate("/sportsbook")}
+              className="inline-flex shrink-0 items-center gap-1 rounded-full bg-accent-bg px-4 py-2 text-sm font-black text-accent transition hover:bg-accent hover:text-white"
+            >
+              Show All <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
           <SportsSection />
         </div>
-      </div>
+      </section>
+
+      {/* E-Sabong Section */}
+      <section className="border-t border-border bg-white py-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-3">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#e1334f] to-[#1f5eff] text-sm text-white shadow-[0_10px_24px_rgba(31,94,255,0.18)]">
+                <Radio className="h-4 w-4" />
+              </div>
+              <h2 className="text-lg font-bold text-primary">E-Sabong</h2>
+            </div>
+            <button
+              type="button"
+              onClick={() => navigate("/e-sabong")}
+              className="inline-flex shrink-0 items-center gap-1 rounded-full bg-accent-bg px-4 py-2 text-sm font-black text-accent transition hover:bg-accent hover:text-white"
+            >
+              Show All <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+          <ESabongHomeSection />
+        </div>
+      </section>
+
+      {/* E-Lotto Section */}
+      <section className="border-t border-border bg-bg py-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-3">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#e1334f] to-[#1f5eff] text-sm text-white shadow-[0_10px_24px_rgba(31,94,255,0.18)]">
+                <Trophy className="h-4 w-4" />
+              </div>
+              <h2 className="text-lg font-bold text-primary">E-Lotto</h2>
+            </div>
+            <button
+              type="button"
+              onClick={() => navigate("/e-lotto")}
+              className="inline-flex shrink-0 items-center gap-1 rounded-full bg-accent-bg px-4 py-2 text-sm font-black text-accent transition hover:bg-accent hover:text-white"
+            >
+              Show All <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+          <ELottoHomeSection />
+        </div>
+      </section>
 
       {/* Casino Games */}
       <section className="border-t border-border bg-white py-8">

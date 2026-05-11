@@ -4,6 +4,7 @@ import CategoryTabs from "./components/CategoryTabs";
 import HomePage from "./pages/HomePage";
 import ELottoPage from "./pages/ELottoPage";
 import ESabongPage from "./pages/ESabongPage";
+import SportsbookPage from "./pages/SportsbookPage";
 import TrendingPage from "./pages/TrendingPage";
 import PlaceholderTabPage from "./pages/PlaceholderTabPage";
 
@@ -18,7 +19,7 @@ export default function App() {
         <Route path="/e-lotto" element={<ELottoPage />} />
         <Route path="/e-sabong" element={<ESabongPage />} />
         <Route path="/arena-console" element={<Navigate to="/e-sabong" replace />} />
-        <Route path="/sportsbook" element={<PlaceholderTabPage title="Sportsbook" />} />
+        <Route path="/sportsbook" element={<SportsbookPage />} />
         <Route path="/casino" element={<PlaceholderTabPage title="Casino" />} />
         <Route path="/live-casino" element={<PlaceholderTabPage title="Live Casino" />} />
       </Routes>
